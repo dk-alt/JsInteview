@@ -1,5 +1,5 @@
 # JsInteview
-Js Interview questinos
+JavaScript JS Interview questinos
 
 basic tricky console questions
 array questions
