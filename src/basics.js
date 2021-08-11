@@ -5,6 +5,8 @@ console.log("100" - 1) //99
 
 console.log("abc" - 1) //Nan
 
+console.log("123" == 123) //true
+console.log("123" === 123)//false//
 
 //remove duplicates from array
 {
@@ -72,7 +74,7 @@ console.log("abc" - 1) //Nan
     console.log(obj)
 }
 
-//merge array using rest operator
+//merge array using spread operator 
 {
     let a1 = [1, 2, 3]
     let a2 = ["a", 'b', "c"]
@@ -108,7 +110,7 @@ console.log("abc" - 1) //Nan
 
 }
 
-//copy using rest operator very important  
+//copy using spread operator very important  
 {
     let user = {
         name: 'dk',
@@ -119,27 +121,27 @@ console.log("abc" - 1) //Nan
         }
     }
 
-    let user1 = {...user}
+    let user1 = { ...user }
 
-    console.log(user,user1)
+    console.log(user, user1)
 
-    //if we use rest operator to copy the object, only first level is deep copy and nested level is shallow 
+    //if we use spread operator to copy the object, only first level is deep copy and nested level is shallow 
     // It means if we change first level data it won't change in copied object but if we will change the nested level it will chagne
 
     user.name = 'AK'
     user.adderess.city = "mumbai"
 
-    console.log(user,user1) //check in console user1's nested level is changed because it is refering to same old object
+    console.log(user, user1) //check in console user1's nested level is changed because it is refering to same old object
 
     //to solve this problem we can spread (copy) the nested object also
 
-    let user2 = {...user, adderess: {...user.adderess}}
+    let user2 = { ...user, adderess: { ...user.adderess } }
 
     // if we will change the city in user then user2 won't get affected
 
     user.adderess.city = 'newcity'
 
-    console.log(user,user2)
+    console.log(user, user2)
 }
 
 
@@ -154,18 +156,65 @@ console.log("abc" - 1) //Nan
         }
     }
 
-    let {name,age} = user //destructuring the first/root level
+    let { name, age } = user //destructuring the first/root level
 
-    console.log(name,age) //dk,28
+    console.log(name, age) //dk,28
 
     //destructuring the nested level
 
-    let { adderess : {city, pincode}} = user
+    let { adderess: { city, pincode } } = user
 
-    console.log(city,pincode) //pune 411017
+    console.log(city, pincode) //pune 411017
 }
 
 
- 
+//print all name from below object recursion
+
+{
+    const apiData = [
+        {
+            id: '1',
+            name: 'first',
+        },
+        {
+            id: '2',
+            name: 'two',
+            children: [
+                {
+                    id: '3',
+                    name: 'three'
+                }, {
+                    id: '2',
+                    name: 'Four',
+                    children: [
+                        {
+                            id: '5',
+                            name: 'five'
+                        }, {
+                            id: '6',
+                            name: 'six'
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+
+
+    getNames = (data, names) => {
+
+        data.forEach(element => {
+            names.push(element.name)
+            if (element.hasOwnProperty('children')) { //can write element['children']
+                getNames(element.children, names)
+            }
+        });
+        return names
+    }
+
+    console.log(getNames(apiData, []))
+
+}
+
 
 
