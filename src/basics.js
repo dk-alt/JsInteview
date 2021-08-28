@@ -8,6 +8,9 @@ console.log("abc" - 1) //Nan
 console.log("123" == 123) //true
 console.log("123" === 123)//false//
 
+console.log(nul==undefined)//true
+console.log(nul===undefined)//false
+
 //remove duplicates from array
 {
     let arr = [1, 1, 1, 2, 2, 2, 3, 3, 3, 4]
