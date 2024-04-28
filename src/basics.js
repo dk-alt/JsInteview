@@ -219,5 +219,11 @@ console.log(nul===undefined)//false
 
 }
 
+/*
+    Script async/defer -> 
+    JS module-> using type='module' can convert the js file to module and it gets downloaded async, it is introduce in ES6, by default is it in "use strict" strict mode.
+    Strict mode-> can't define global variable, can't use var before declaration. can't use delete keyword
+    
+*/
 
 
